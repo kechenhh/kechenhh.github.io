@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>我的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的博客">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="前端笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="kechenhh">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">我的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle"> my blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-父子组件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6.html" class="article-date">
+  <time datetime="2020-01-14T02:30:15.000Z" itemprop="datePublished">2020-01-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>►<a class="article-category-link" href="/categories/Vue/%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/">组件化开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6.html">父子组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="组件通信—-父传子（props"><a href="#组件通信—-父传子（props" class="headerlink" title="组件通信—-父传子（props)"></a>组件通信—-父传子（props)</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--2.绑定--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span> <span class="attr">:cmovies</span>=<span class="string">'movies'</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"cpn"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in cmovies"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../vue.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="comment">//父传子：props==&gt;properties 属性</span></span></span><br><span class="line"><span class="actionscript">	<span class="comment">// 子组件</span></span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">'#cpn'</span>,</span></span><br><span class="line"><span class="actionscript">		<span class="comment">//1.定义</span></span></span><br><span class="line"><span class="actionscript">		props:[<span class="string">'cmovies'</span>],</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="actionscript">	<span class="comment">// 父组件(Vue实例)</span></span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">		el:<span class="string">'#app'</span>,</span></span><br><span class="line">		data:&#123;</span><br><span class="line"><span class="actionscript">			message:<span class="string">'你好Vue'</span>,</span></span><br><span class="line"><span class="actionscript">			movies:[<span class="string">'海王'</span>,<span class="string">'超人'</span>]</span></span><br><span class="line">		&#125;,</span><br><span class="line">		components:&#123;</span><br><span class="line">			cpn</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="props中的驼峰标识"><a href="#props中的驼峰标识" class="headerlink" title="props中的驼峰标识"></a>props中的驼峰标识</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 不支持驼峰标识  cInfo转换为c-info,childMyMessage转换为child-my-message--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span> <span class="attr">:c-info</span>=<span class="string">"info"</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"cpn"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 模板有多个标签时，必须包含根标签(例：div) --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;cInfo&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../vue.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">'#cpn'</span>,</span></span><br><span class="line">		props:&#123;</span><br><span class="line"><span class="actionscript">			<span class="comment">//驼峰标识</span></span></span><br><span class="line">			cInfo:&#123;</span><br><span class="line"><span class="javascript">				type: <span class="built_in">Object</span>,</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">default</span>()&#123;</span></span><br><span class="line"><span class="actionscript">					<span class="keyword">return</span>&#123;name:<span class="string">'某人'</span>&#125;</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">		el:<span class="string">'#app'</span>,</span></span><br><span class="line">		data:&#123;</span><br><span class="line"><span class="actionscript">			message:<span class="string">'你好Vue'</span>,</span></span><br><span class="line">			info:&#123;</span><br><span class="line"><span class="actionscript">				name:<span class="string">'jack'</span>,</span></span><br><span class="line">				age:18</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		components:&#123;</span><br><span class="line">			cpn</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件通信—子传父（自定义事件名称）"><a href="#组件通信—子传父（自定义事件名称）" class="headerlink" title="组件通信—子传父（自定义事件名称）"></a>组件通信—子传父（自定义事件名称）</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 2.监听事件 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span> @<span class="attr">item-click</span>=<span class="string">"cpnClick"</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"cpn"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">v-for</span>=<span class="string">"item in categories"</span> @<span class="attr">click</span>=<span class="string">"btnClick(item)"</span>&gt;</span></span><br><span class="line">			&#123;&#123;item.name&#125;&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../vue.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">'#cpn'</span>,</span></span><br><span class="line">		data()&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">return</span>&#123;</span></span><br><span class="line">				categories:[</span><br><span class="line"><span class="actionscript">					&#123;id:<span class="string">'aaa'</span>,name:<span class="string">'热门推荐'</span>&#125;,</span></span><br><span class="line"><span class="actionscript">					&#123;id:<span class="string">'bbb'</span>,name:<span class="string">'手机数码'</span>&#125;,</span></span><br><span class="line"><span class="actionscript">					&#123;id:<span class="string">'ccc'</span>,name:<span class="string">'家用家电'</span>&#125;,</span></span><br><span class="line"><span class="actionscript">					&#123;id:<span class="string">'ddd'</span>,name:<span class="string">'电脑办公'</span>&#125;,</span></span><br><span class="line">				]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		methods:&#123;</span><br><span class="line">			btnClick(item)&#123;</span><br><span class="line"><span class="actionscript">				<span class="comment">//1.发射事件	this.$emit('自定义事件名称',item)</span></span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.$emit(<span class="string">'item-click'</span>,item)</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">		el:<span class="string">'#app'</span>,</span></span><br><span class="line">		data:&#123;</span><br><span class="line"><span class="actionscript">			message:<span class="string">'你好Vue'</span>,</span></span><br><span class="line">		&#125;,</span><br><span class="line">		components:&#123;</span><br><span class="line">			cpn</span><br><span class="line">		&#125;,</span><br><span class="line">		methods:&#123;</span><br><span class="line">			cpnClick(item)&#123;</span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(item.name)</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="父子组件通信-结合双向绑定案例"><a href="#父子组件通信-结合双向绑定案例" class="headerlink" title="父子组件通信-结合双向绑定案例"></a>父子组件通信-结合双向绑定案例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span> <span class="attr">:number1</span>=<span class="string">"num1"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">:number2</span>=<span class="string">"num2"</span></span></span><br><span class="line"><span class="tag">			@<span class="attr">number1change</span>=<span class="string">"number1change"</span></span></span><br><span class="line"><span class="tag">			@<span class="attr">number2change</span>=<span class="string">"number2change"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"cpn"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>props:&#123;&#123;number1&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>data:&#123;&#123;dnumber1&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- &lt;input type="text" v-model="dnumber1"&gt; --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">:value</span>=<span class="string">"dnumber1"</span> @<span class="attr">input</span>=<span class="string">"num1Input"</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>props:&#123;&#123;number2&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>data:&#123;&#123;dnumber2&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- &lt;input type="text" v-model="dnumber2"&gt; --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">:value</span>=<span class="string">"dnumber2"</span> @<span class="attr">input</span>=<span class="string">"num2Input"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../vue.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">'#cpn'</span>,</span></span><br><span class="line">		props:&#123;</span><br><span class="line"><span class="javascript">			number1:<span class="built_in">Number</span>,</span></span><br><span class="line"><span class="javascript">			number2:<span class="built_in">Number</span></span></span><br><span class="line">		&#125;,</span><br><span class="line">		data()&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">return</span>&#123;</span></span><br><span class="line"><span class="actionscript">				dnumber1:<span class="keyword">this</span>.number1,</span></span><br><span class="line"><span class="actionscript">				dnumber2:<span class="keyword">this</span>.number2,</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		methods:&#123;</span><br><span class="line">			num1Input(event)&#123;</span><br><span class="line"><span class="actionscript">				<span class="comment">//1.将input中的value赋值到dnumber中</span></span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.dnumber1 = event.target.value</span></span><br><span class="line"><span class="actionscript">				<span class="comment">//2.为了让父组件可以修改值，发出一个事件</span></span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.$emit(<span class="string">'number1change'</span>,<span class="keyword">this</span>.dnumber1)</span></span><br><span class="line">			&#125;,</span><br><span class="line">			num2Input(event)&#123;</span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.dnumber2 = event.target.value</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.$emit(<span class="string">'number2change'</span>,<span class="keyword">this</span>.dnumber2)</span></span><br><span class="line">			&#125;,</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">		el:<span class="string">'#app'</span>,</span></span><br><span class="line">		data:&#123;</span><br><span class="line"><span class="actionscript">			message:<span class="string">'你好Vue'</span>,</span></span><br><span class="line">			num1:0,</span><br><span class="line">			num2:1</span><br><span class="line">		&#125;,</span><br><span class="line">		components:&#123;</span><br><span class="line">			cpn</span><br><span class="line">		&#125;,</span><br><span class="line">		methods:&#123;</span><br><span class="line">			number1change(value)&#123;</span><br><span class="line"><span class="javascript">				<span class="keyword">this</span>.num1= <span class="built_in">parseFloat</span>(value)</span></span><br><span class="line">			&#125;,</span><br><span class="line">			number2change(value)&#123;</span><br><span class="line"><span class="javascript">				<span class="keyword">this</span>.num2= <span class="built_in">parseFloat</span>(value)</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件访问–父访问子-children或-refs"><a href="#组件访问–父访问子-children或-refs" class="headerlink" title="组件访问–父访问子$children或$refs"></a>组件访问–父访问子$children或$refs</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 加上ref --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span> <span class="attr">ref</span>=<span class="string">"aaa"</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> @<span class="attr">click</span>=<span class="string">"btnClick"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"cpn"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		我是子组件</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../vue.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">"#cpn"</span>,</span></span><br><span class="line">		methods:&#123;</span><br><span class="line">			showMessage()&#123;</span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(<span class="string">'这是子组件showMessage'</span>);</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		data()&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">return</span>&#123;</span></span><br><span class="line"><span class="actionscript">				name:<span class="string">'子组件name'</span></span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">		el:<span class="string">'#app'</span>,</span></span><br><span class="line">		data:&#123;</span><br><span class="line"><span class="actionscript">			message:<span class="string">'你好Vue'</span></span></span><br><span class="line">		&#125;,</span><br><span class="line">		components:&#123;</span><br><span class="line">			cpn</span><br><span class="line">		&#125;,</span><br><span class="line">		methods:&#123;</span><br><span class="line">			btnClick()&#123;</span><br><span class="line"><span class="actionscript">				<span class="comment">// 1.$children(使用较少)</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// console.log(this.$children);</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">//调用子组件的方法</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// this.$children[0].showMessage();</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">//调用子组件的属性</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// console.log(this.$children[0].name);</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">//遍历</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// for(let c of this.$children)&#123;</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// 	console.log(c.name);</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// 	c.showMessage()</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// &#125;</span></span></span><br><span class="line">				</span><br><span class="line"><span class="actionscript">				<span class="comment">// 2.$refs</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs.aaa.name)</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件访问–子访问父-parent或-root"><a href="#组件访问–子访问父-parent或-root" class="headerlink" title="组件访问–子访问父$parent或$root"></a>组件访问–子访问父$parent或$root</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cpn</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"cpn"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		我是cpn组件</span><br><span class="line">		<span class="tag">&lt;<span class="name">ccpn</span>&gt;</span><span class="tag">&lt;/<span class="name">ccpn</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"ccpn"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是子组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> @<span class="attr">click</span>=<span class="string">"btnClick"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../vue.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="comment">//子组件</span></span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> ccpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">"#ccpn"</span>,</span></span><br><span class="line">		methods:&#123;</span><br><span class="line">			btnClick()&#123;</span><br><span class="line"><span class="actionscript">				<span class="comment">//1.访问父组件$parent(使用较少)</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(<span class="keyword">this</span>.$parent.name);</span></span><br><span class="line"><span class="actionscript">				<span class="comment">//2.访问根组件$root(使用较少)--访问Vue实例</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(<span class="keyword">this</span>.$root.message);</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"><span class="actionscript">	<span class="comment">//父组件</span></span></span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> cpn = &#123;</span></span><br><span class="line"><span class="actionscript">		template:<span class="string">"#cpn"</span>,</span></span><br><span class="line">		components:&#123;</span><br><span class="line">			ccpn</span><br><span class="line">		&#125;,</span><br><span class="line">		data()&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">return</span>&#123;</span></span><br><span class="line"><span class="actionscript">				name:<span class="string">'cpn组件的name'</span></span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="actionscript">	<span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">		el:<span class="string">'#app'</span>,</span></span><br><span class="line">		data:&#123;</span><br><span class="line"><span class="actionscript">			message:<span class="string">'你好Vue'</span></span></span><br><span class="line">		&#125;,</span><br><span class="line">		components:&#123;</span><br><span class="line">			cpn</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6.html" data-id="ck5d9ocg30000fcufhefw15t3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6/" rel="tag">父子组件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo写作指令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo%E5%86%99%E4%BD%9C%E6%8C%87%E4%BB%A4.html" class="article-date">
+  <time datetime="2020-01-14T01:59:50.850Z" itemprop="datePublished">2020-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/hexo%E5%86%99%E4%BD%9C%E6%8C%87%E4%BB%A4.html">hexo写作指令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个网站。如果没有设置 <code>folder</code> ，Hexo 默认在目前的文件夹建立网站</p>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <code>_config.yml</code> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来</p>
+<h2 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件</p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-d, –deploy</td>
+<td align="left">文件生成后立即部署网站</td>
+</tr>
+<tr>
+<td align="left">-w, –watch</td>
+<td align="left">监视文件变动</td>
+</tr>
+</tbody></table>
+<p>该命令可以简写为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+
+<h2 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发表草稿</p>
+<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>启动服务器。默认情况下，访问网址为：<code>http://localhost:4000/</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-p, –port</td>
+<td align="left">重设端口</td>
+</tr>
+<tr>
+<td align="left">-s, –static</td>
+<td align="left">只使用静态文件</td>
+</tr>
+<tr>
+<td align="left">-l, –log</td>
+<td align="left">启动日记记录，使用覆盖记录格式</td>
+</tr>
+</tbody></table>
+<h2 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>部署网站</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-g, –generate</td>
+<td align="left">部署之前预先生成静态文件</td>
+</tr>
+</tbody></table>
+<p>该命令可以简写为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br></pre></td></tr></table></figure>
+
+<p>渲染文件</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-o, –output</td>
+<td align="left">设置输出路径</td>
+</tr>
+</tbody></table>
+<h2 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo migrate &lt;<span class="built_in">type</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>从其他博客系统 迁移内容</p>
+<h2 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>清除缓存文件 <code>db.json</code> 和已生成的静态文件 <code>public</code></p>
+<p>在某些情况(尤其是更换主题后)，如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令</p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;<span class="built_in">type</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>列出网站资料</p>
+<h2 id="version"><a href="#version" class="headerlink" title="version"></a>version</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+
+<p>显示 Hexo 版本</p>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><h3 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --safe</span><br></pre></td></tr></table></figure>
+
+<p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行</p>
+<h3 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --debug</span><br></pre></td></tr></table></figure>
+
+<p>在终端中显示调试信息并记录到 <code>debug.log</code>。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub</p>
+<h3 id="简洁模式"><a href="#简洁模式" class="headerlink" title="简洁模式"></a>简洁模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --silent</span><br></pre></td></tr></table></figure>
+
+<p>隐藏终端信息</p>
+<h3 id="自定义配置文件的路径"><a href="#自定义配置文件的路径" class="headerlink" title="自定义配置文件的路径"></a>自定义配置文件的路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --config custom.yml</span><br></pre></td></tr></table></figure>
+
+<p>自定义配置文件的路径，执行后将不再使用 <code>_config.yml</code></p>
+<h3 id="显示草稿"><a href="#显示草稿" class="headerlink" title="显示草稿"></a>显示草稿</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --draft</span><br></pre></td></tr></table></figure>
+
+<p>显示 <code>source/_drafts</code> 文件夹中的草稿文章</p>
+<h3 id="自定义-CWD"><a href="#自定义-CWD" class="headerlink" title="自定义 CWD"></a>自定义 CWD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --cwd /path/to/cwd</span><br></pre></td></tr></table></figure>
+
+<p>自定义当前工作目录（Current working directory）的路径</p>
+<h2 id="部署到Git"><a href="#部署到Git" class="headerlink" title="部署到Git"></a>部署到Git</h2><p>GitHub官网: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com</a></p>
+<p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">或者</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<p>在开始之前，您必须先在 <code>_config.yml</code> 中修改参数，一个正确的部署配置中至少要有 <code>type</code> 参数，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br></pre></td></tr></table></figure>
+
+<p>您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repo:</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repo:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>YAML依靠缩进来确定元素间的从属关系。因此，请确保每个deployer的缩进长度相同，并且使用空格缩进。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>安装 <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>修改配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: &lt;repository url&gt;</span><br><span class="line">  branch: [branch]</span><br><span class="line">  message: [message]</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">repo</td>
+<td align="left">仓库（Repository）地址</td>
+</tr>
+<tr>
+<td align="left">branch</td>
+<td align="left">分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测。</td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">自定义提交信息 默认为当前时间</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/hexo%E5%86%99%E4%BD%9C%E6%8C%87%E4%BB%A4.html" data-id="ck5db4qx9000098uf4fl57734" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E6%B5%8B%E8%AF%95.html" class="article-date">
+  <time datetime="2020-01-14T01:57:51.000Z" itemprop="datePublished">2020-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%B5%8B%E8%AF%95.html">测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>本地图片统一放在source/images文件夹中</p>
+<p>​    填写路径 images/11.jpg</p>
+<p><img src="images/11.jpg" alt="风景"></p>
+<h3 id="插入音频"><a href="#插入音频" class="headerlink" title="插入音频"></a>插入音频</h3><p><a href="https://music.163.com/#/outchain/2/536709687/" target="_blank" rel="noopener">网易云音乐外链播放器</a></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100%  src="//music.163.com/outchain/player?type=2&id=536709687&auto=0&height=66"></iframe>
+
+<h3 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h3><iframe src="//player.bilibili.com/player.html?aid=3569985&cid=5691295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width=100% height=800> </iframe>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/%E6%B5%8B%E8%AF%95.html" data-id="ck5d8l4w10001ecufg5ue0sfs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/">组件化开发</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6/" rel="tag">父子组件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6/" style="font-size: 10px;">父子组件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6.html">父子组件</a>
+          </li>
+        
+          <li>
+            <a href="/hexo%E5%86%99%E4%BD%9C%E6%8C%87%E4%BB%A4.html">hexo写作指令</a>
+          </li>
+        
+          <li>
+            <a href="/%E6%B5%8B%E8%AF%95.html">测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 kechenhh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

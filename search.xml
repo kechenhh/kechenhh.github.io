@@ -11,7 +11,7 @@
 <p><strong>label</strong>中 for和input中的name相同，可以点击文字选中</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"agree"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"agree"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span>同意协议</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-
+<a id="more"></a>
 
 
 <p><a href="https://www.bilibili.com/video/av51518146" target="_blank" rel="noopener">https://www.bilibili.com/video/av51518146</a></p>

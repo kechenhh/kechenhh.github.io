@@ -3,6 +3,36 @@
   
     
     <entry>
+      <title><![CDATA[加密文章]]></title>
+      <url>/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0.html</url>
+      <content type="html"><![CDATA[<h3 id="1-规划IP地址"><a href="#1-规划IP地址" class="headerlink" title="1.规划IP地址"></a>1.规划IP地址</h3><p>按照自己的需求规划好IP地址，尽量用纸记下来，省的以后乱套。</p>
+<p>建议将PVE地址规划为软路由lan口的子网地址 例如192.168.123.100</p>
+<p>群辉地址也为lan口的子网地址 例如192.168.123.102(这里的102是PVE的虚拟机序号，默认是从100开始)</p>
+<h3 id="2-制作U盘启动"><a href="#2-制作U盘启动" class="headerlink" title="2.制作U盘启动"></a>2.制作U盘启动</h3><p>两个优盘，一个装PE，一个装PVE镜像</p>
+<ol>
+<li>PE直接用老毛桃即可。</li>
+<li>用win32磁盘映像工具将pve的iso镜像写入U盘</li>
+</ol>
+<h3 id="3-恢复bios默认设置"><a href="#3-恢复bios默认设置" class="headerlink" title="3.恢复bios默认设置"></a>3.恢复bios默认设置</h3><p>开机接键盘后按del进去bios，然后按F9恢复默认设置，然后F10保存并退出。</p>
+<h2 id="二、安装PVE"><a href="#二、安装PVE" class="headerlink" title="二、安装PVE"></a>二、安装PVE</h2><ol>
+<li>插入老毛桃优盘进入PE，进入后将内置16G的mSATA所有分区删除，然后建立一个新分区。NTFS格式，取消勾选ESP和EFI。</li>
+<li>关机，拔出老毛桃U盘，插入刻录PVE镜像的优盘启动盘。</li>
+<li>开机按F11选择UEFI开头的U盘，进入PVE安装界面</li>
+<li>根据指示安装完成即可。(这里会提示设置PVE的IP地址、子网掩码和网关)</li>
+<li>添加网卡桥接，默认只有一个桥接网卡，按照格式添加新的桥接网卡即可。建议备注好WAN和LAN口。因为蜗牛只有2个网卡，所以备注好WAN和LAN同时在机箱后备注好WAN和LAN。</li>
+</ol>
+<h2 id="三、安装LEDE"><a href="#三、安装LEDE" class="headerlink" title="三、安装LEDE"></a>三、安装LEDE</h2>]]></content>
+      
+        
+        <tags>
+            
+            <tag> 加密 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML5]]></title>
       <url>/HTML5.html</url>
       <content type="html"><![CDATA[<h2 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h2><p>让<strong>radio</strong>单选框只能选一个——-name相同时，只能选一个</p>
@@ -160,7 +190,20 @@
     <entry>
       <title><![CDATA[hexo写作指令]]></title>
       <url>/hexo%E5%86%99%E4%BD%9C%E6%8C%87%E4%BB%A4.html</url>
-      <content type="html"><![CDATA[<h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h2 id="文章加密"><a href="#文章加密" class="headerlink" title="文章加密"></a>文章加密</h2><p>themes/next/layout/_partials/head/head.swig<br>在第5行，也就是第一个if前添加下面代码</p>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<p>然后再文章开头的— —内添加password: 密码 //记得有空格</p>
+<h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
 
 <p>新建一个网站。如果没有设置 <code>folder</code> ，Hexo 默认在目前的文件夹建立网站</p>
 <h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>

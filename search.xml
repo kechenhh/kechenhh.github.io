@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>v-model表单绑定</title>
+    <url>/v-model%E8%A1%A8%E5%8D%95%E7%BB%91%E5%AE%9A.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>hexo写作指令</title>
     <url>/hexo%E5%86%99%E4%BD%9C%E6%8C%87%E4%BB%A4.html</url>
     <content><![CDATA[<h2 id="快捷命令"><a href="#快捷命令" class="headerlink" title="快捷命令"></a>快捷命令</h2><p>hexo clean &amp;&amp; heox g &amp;&amp; hexo s</p>

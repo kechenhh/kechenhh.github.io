@@ -9,6 +9,8 @@
 
 <p><strong>-i 图标</strong></p>
 <p><strong>加上  -w   去掉黑窗口</strong></p>
+<a id="more"></a>
+
 <p>附——pyinstaller打包参数说明：</p>
 <table>
 <thead>

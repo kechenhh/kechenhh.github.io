@@ -215,6 +215,263 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E7%88%AC%E5%8F%96%E5%A5%BD%E7%9C%8B%E8%A7%86%E9%A2%91.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kechenhh">
+      <meta itemprop="description" content="前端笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/%E7%88%AC%E5%8F%96%E5%A5%BD%E7%9C%8B%E8%A7%86%E9%A2%91.html" class="post-title-link" itemprop="url">爬取好看视频</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-18 16:50:29 / 修改时间：16:54:31" itemprop="dateCreated datePublished" datetime="2020-01-18T16:50:29+08:00">2020-01-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">base_url = <span class="string">'https://haokan.baidu.com/videoui/api/videorec?tab=miaodong&amp;act=pcFeed&amp;pd=pc&amp;num=20&amp;shuaxin_id=1579332680931'</span></span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'</span>&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(base_url, headers=headers)</span><br><span class="line">json_str =res.text</span><br><span class="line"><span class="comment">#json.loads()：将json字符串 转化为 Python可以识别的字典</span></span><br><span class="line">json_dict = json.loads(json_str)</span><br><span class="line"></span><br><span class="line">video_list = json_dict[<span class="string">'data'</span>][<span class="string">'response'</span>][<span class="string">'videos'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> video <span class="keyword">in</span> video_list:</span><br><span class="line">    title = video[<span class="string">'title'</span>]+<span class="string">'.mp4'</span></span><br><span class="line">    play_url = video[<span class="string">'play_url'</span>]</span><br><span class="line">    <span class="comment">#下载视频,获取的是response的content（二进制文件）</span></span><br><span class="line">    download_play_url = requests.get(play_url).content</span><br><span class="line">    <span class="keyword">with</span> open(title, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(download_play_url)</span><br><span class="line">        print(title+<span class="string">'。。。下载完成'</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/python%E7%88%AC%E8%99%AB%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E4%B9%8Bparsel%E6%A8%A1%E5%9D%97.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kechenhh">
+      <meta itemprop="description" content="前端笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/python%E7%88%AC%E8%99%AB%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E4%B9%8Bparsel%E6%A8%A1%E5%9D%97.html" class="post-title-link" itemprop="url">python爬虫网页解析之parsel模块</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-18 14:07:52 / 修改时间：14:10:50" itemprop="dateCreated datePublished" datetime="2020-01-18T14:07:52+08:00">2020-01-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一-parsel模块安装"><a href="#一-parsel模块安装" class="headerlink" title="一.parsel模块安装"></a>一.parsel模块安装</h2><p>官网链接<a href="https://pypi.org/project/parsel/1.0.2/" target="_blank" rel="noopener">https://pypi.org/project/parsel/1.0.2/</a></p>
+<p>​    pip install parsel==1.0.2</p>
+<h2 id="二-模块作用"><a href="#二-模块作用" class="headerlink" title="二.模块作用"></a>二.模块作用</h2><p>该模块主要用来将请求后的字符串格式，解析成re,xpath,css进行内容的匹配</p>
+<h2 id="三-使用"><a href="#三-使用" class="headerlink" title="三.使用"></a>三.使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> parsel</span><br><span class="line"></span><br><span class="line">response = requests.get(url)</span><br><span class="line">html = response.text</span><br><span class="line">sel = parsel.Selector(html)  <span class="comment">#注意这里的S要大写</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># re正则</span></span><br><span class="line"><span class="comment"># print(sel.re('正则匹配格式'))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># xpath</span></span><br><span class="line"><span class="comment"># print(sel.xpath('xpath').getall()) #getall获取所有</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># css选择器</span></span><br><span class="line"><span class="comment"># print(sel.css('css选择器 ::text').extract_first())#获取第一个</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/AnyProxy%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kechenhh">
+      <meta itemprop="description" content="前端笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/AnyProxy%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html" class="post-title-link" itemprop="url">AnyProxy抓包工具</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-17 17:02:59" itemprop="dateCreated datePublished" datetime="2020-01-17T17:02:59+08:00">2020-01-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-18 16:56:24" itemprop="dateModified" datetime="2020-01-18T16:56:24+08:00">2020-01-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>AnyProxy是阿里巴巴基于 Node.js 开发的一款开源代理服务器。做为中间代理服务器，它可以收集所有经过它的http请求流量（包括https明文内容）；它提供了友好的web界面，便于直观的查看经过它的http请求；同时它支持二次开发，可以用javascript控制整个代理的全部流程，便于前端调试和收集http请求页面内容。它可以用于移动app和移动web页面调试、 抓取。</p>
+<p>　</p>
+<h2 id="一、实验环境："><a href="#一、实验环境：" class="headerlink" title="一、实验环境："></a>一、实验环境：</h2><p>操作系统： Windows 10 X64位</p>
+<p>AnyPorxy版本： 3.10.4</p>
+<p>　</p>
+<h2 id="二、安装Node-js："><a href="#二、安装Node-js：" class="headerlink" title="二、安装Node.js："></a>二、安装Node.js：</h2><p>　从Node.js官网下载最新版或者稳定版Node.js的msi文件后，双击安装，知道安装完成即可。</p>
+<p> 　</p>
+<h2 id="三、安装和启动AnyProxy："><a href="#三、安装和启动AnyProxy：" class="headerlink" title="三、安装和启动AnyProxy："></a>三、安装和启动AnyProxy：</h2><h3 id="１、安装AnyProxy："><a href="#１、安装AnyProxy：" class="headerlink" title="１、安装AnyProxy："></a>１、安装AnyProxy：</h3><p>　　安装好Node.js后，在windows的命令提示符中输入下面命令安装AnyProxy，耐心等待直到安装完成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;npm &#96;&#96;install&#96; &#96;-g anyproxy&#96;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、生成根证书（RootCA）："><a href="#2、生成根证书（RootCA）：" class="headerlink" title="2、生成根证书（RootCA）："></a>2、生成根证书（RootCA）：</h3><p>　　https需要证书才能以明文的方式显示请求内容，所有这里我们必须生成根证书。在cmd命令提示符中运行下面命令生成根证书：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;anyproxy --root&#96;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、启动AnyProxy代理监听服务："><a href="#3、启动AnyProxy代理监听服务：" class="headerlink" title="3、启动AnyProxy代理监听服务："></a>3、启动AnyProxy代理监听服务：</h3><p>　　通过”anyproxy -i“命令启动代理监听，其中”-i“参数启用https请求内容解析。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;anyproxy -i&#96;</span><br></pre></td></tr></table></figure>
+
+<p>通过上面命令启动AnyProxy代理监听服务服务后，AnyProxy会打开两个端口：</p>
+<ul>
+<li>8001端口：即代理服务端口， 本机的IP和8001用于<strong>设置代理</strong>，如：<em>192.168.0.119:8001</em></li>
+<li>8002端口：AnyProxy的web界面，通过浏览器打开<em><a href="http://192.168.0.119:8002" target="_blank" rel="noopener">http://192.168.0.119:8002</a></em>的形式，即可查看所有经过AnyProxy代理的http请求。</li>
+</ul>
+<p><a href="http://img.aiezu.com/article/20170329/440ecf3e03bf9df82506690790470a7d.png" target="_blank" rel="noopener"><img src="http://img.aiezu.com/article/20170329/440ecf3e03bf9df82506690790470a7d.png" alt="windows下安装AnyProxy.png"></a></p>
+<p>　</p>
+<h2 id="四、设置代理（手机端）："><a href="#四、设置代理（手机端）：" class="headerlink" title="四、设置代理（手机端）："></a>四、设置代理（手机端）：</h2><h3 id="1、安装证书"><a href="#1、安装证书" class="headerlink" title="1、安装证书"></a>1、安装证书</h3><p>　　我们需要在被代理的手机上安装证书，这样在AnyProxy上才能以明文的方式查看https请求内容。在手机上安装证书有两种方式：</p>
+<ol>
+<li><p>直接在手机浏览器中打开”<em><a href="http://ip:8002/fetchCrtFile" target="_blank" rel="noopener">http://ip:8002/fetchCrtFile</a></em>“（IP换成安装AnyProxy机器的IP）</p>
+</li>
+<li><p>在安装AnyProxy主机上打开”<em><a href="http://localhost:8002/qr_root" target="_blank" rel="noopener">http://localhost:8002/qr_root</a></em>“，然后用微信 扫描二维码，再通过微信在浏览器中打开的方式安装证书（必须在微信中跳转到浏览器中打开，否则弹不出安装证书对话框）。</p>
+</li>
+</ol>
+<p> <strong>问题</strong>：以小米手机为例，浏览器访问 <a href="http://anyproxy_ip:8002/qr_root" target="_blank" rel="noopener">http://anyproxy_ip:8002/qr_root</a> 下载或扫描二维码下载rootCA.crt文件后，不自动安装，手动点击，提示： “无法安装该证书，因为无法读取证书文件。” </p>
+<p><strong>解决方案</strong>：设置 &gt; 更多设置 &gt; 系统安全 &gt; 从存储设备安装 &gt; 选择rootCA.crt文件 &gt; 弹出为证书命名弹框，随便命名 &gt; 弹出提示框：您需要先设置锁定屏幕密码才能使用凭据存储。 &gt; 设置手机锁屏密码 &gt; 安装证书成功。</p>
+<h3 id="２、设置代理（以ios举例）："><a href="#２、设置代理（以ios举例）：" class="headerlink" title="２、设置代理（以ios举例）："></a>２、设置代理（以ios举例）：</h3><p>　　在手机wifi设置中，手动设置http代理，在服务器中输入安装上面的代理IP，端口输入8001，保存即可。这样在此手机上所有的http请求（包括Web站点和收集app，如微信中的http请求），都会通过AnyProxy代理。</p>
+<p><a href="http://img.aiezu.com/article/20170329/4abf190a21259537376e7a0c3cc29f4e.png" target="_blank" rel="noopener"><img src="http://img.aiezu.com/article/20170329/4abf190a21259537376e7a0c3cc29f4e.png" alt="windows下安装AnyProxy_view.png"></a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/python%E4%BD%BF%E7%94%A8xmlrpc%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E5%88%B0wordpress.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,75 +1031,12 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E6%B5%8B%E8%AF%95.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="kechenhh">
-      <meta itemprop="description" content="前端笔记">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/%E6%B5%8B%E8%AF%95.html" class="post-title-link" itemprop="url">测试</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-14 09:57:51 / 修改时间：14:26:53" itemprop="dateCreated datePublished" datetime="2020-01-14T09:57:51+08:00">2020-01-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>本地图片统一放在source/images文件夹中</p>
-<p>​    填写路径 images/11.jpg</p>
-<p><img src="images/11.jpg" alt="风景"></p>
-<h3 id="插入音频"><a href="#插入音频" class="headerlink" title="插入音频"></a>插入音频</h3><p><a href="https://music.163.com/#/outchain/2/536709687/" target="_blank" rel="noopener">网易云音乐外链播放器</a></p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100%  src="//music.163.com/outchain/player?type=2&id=536709687&auto=0&height=66"></iframe>
-
-<h3 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h3><iframe src="//player.bilibili.com/player.html?aid=3569985&cid=5691295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width=100% height=800> </iframe>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -909,20 +1103,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

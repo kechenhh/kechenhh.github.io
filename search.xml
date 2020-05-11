@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>路由vue-router</title>
+    <url>/%E8%B7%AF%E7%94%B1vue-router.html</url>
+    <content><![CDATA[<h2 id="路由vue-router"><a href="#路由vue-router" class="headerlink" title="路由vue-router"></a>路由vue-router</h2><h3 id="1-搭建路由框架"><a href="#1-搭建路由框架" class="headerlink" title="1.搭建路由框架"></a>1.搭建路由框架</h3><p><strong>安装(可通过脚手架安装)</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install vue-router --save</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建 src/router/index.js</strong>  (配置路由信息)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//配置路由相关的信息</span></span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.通过Vue.use(插件),安装插件</span></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.创建VueRouter对象</span></span><br><span class="line"><span class="keyword">const</span> routers = [</span><br><span class="line">]<span class="comment">//将要填写的抽取为数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	<span class="comment">//配置路由和组件之间的应用关系</span></span><br><span class="line">	routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.将router 对象传入到Vue实例</span></span><br><span class="line"><span class="comment">//导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>在main.js中引入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span><span class="comment">//导入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">	router, <span class="comment">//挂载路由（router：router 简写）</span></span><br><span class="line">	render:<span class="function"><span class="params">h</span> =&gt;</span>h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用vue-router"><a href="#2-使用vue-router" class="headerlink" title="2.使用vue-router"></a>2.使用vue-router</h3><p>创建Home组件和About组件</p>
+<p>src/router/index.js中引入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'../components/Home.vue'</span></span><br><span class="line"><span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">'../components/About.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routers = [</span><br><span class="line">	&#123;</span><br><span class="line">		path:<span class="string">'/home'</span>,</span><br><span class="line">		component:Home</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		path:<span class="string">'/about'</span>,</span><br><span class="line">		component:About</span><br><span class="line">	&#125;,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	<span class="comment">//配置路由和组件之间的应用关系</span></span><br><span class="line">	routes:routers</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>爬取好看视频</title>
     <url>/%E7%88%AC%E5%8F%96%E5%A5%BD%E7%9C%8B%E8%A7%86%E9%A2%91.html</url>
     <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">base_url = <span class="string">'https://haokan.baidu.com/videoui/api/videorec?tab=miaodong&amp;act=pcFeed&amp;pd=pc&amp;num=20&amp;shuaxin_id=1579332680931'</span></span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'</span>&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(base_url, headers=headers)</span><br><span class="line">json_str =res.text</span><br><span class="line"><span class="comment">#json.loads()：将json字符串 转化为 Python可以识别的字典</span></span><br><span class="line">json_dict = json.loads(json_str)</span><br><span class="line"></span><br><span class="line">video_list = json_dict[<span class="string">'data'</span>][<span class="string">'response'</span>][<span class="string">'videos'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> video <span class="keyword">in</span> video_list:</span><br><span class="line">    title = video[<span class="string">'title'</span>]+<span class="string">'.mp4'</span></span><br><span class="line">    play_url = video[<span class="string">'play_url'</span>]</span><br><span class="line">    <span class="comment">#下载视频,获取的是response的content（二进制文件）</span></span><br><span class="line">    download_play_url = requests.get(play_url).content</span><br><span class="line">    <span class="keyword">with</span> open(title, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(download_play_url)</span><br><span class="line">        print(title+<span class="string">'。。。下载完成'</span>)</span><br></pre></td></tr></table></figure>

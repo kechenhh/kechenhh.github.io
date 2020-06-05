@@ -19,6 +19,8 @@
 <p><strong>在App.vue中展示</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">		&lt;!-- 用来切换 --&gt;</span><br><span class="line">		&lt;router-link to&#x3D;&quot;&#x2F;home&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">		&lt;router-link to&#x3D;&quot;&#x2F;about&quot;&gt;关于&lt;&#x2F;router-link&gt;</span><br><span class="line">		&lt;!-- 用来占位，内容显示的位置 --&gt;</span><br><span class="line">		&lt;router-view&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <h3 id="router-link补充"><a href="#router-link补充" class="headerlink" title="router-link补充"></a>router-link补充</h3><h4 id="1-渲染成其他标签-tag"><a href="#1-渲染成其他标签-tag" class="headerlink" title="1.渲染成其他标签 tag"></a>1.渲染成其他标签 tag</h4><p>默认渲染成a标签 </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;router-link to&#x3D;&quot;&#x2F;home&quot; tag&#x3D;&quot;button&quot;&gt;首页&lt;&#x2F;router-link&gt;</span><br><span class="line">&lt;router-link to&#x3D;&quot;&#x2F;about&quot; tag&#x3D;&quot;button&quot;&gt;关于&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
 

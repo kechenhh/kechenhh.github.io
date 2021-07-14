@@ -11,6 +11,7 @@ module.exports = [
         items: [
           { text: 'JavaScript', link: '/pages/8143cc480faf9a11/' },
           { text: 'Vue', link: '/pages/5d463fbdb172d43b/' },
+          { text: '小野前端', link: '/pages/4f5cc0/' }
         ],
       },
       {

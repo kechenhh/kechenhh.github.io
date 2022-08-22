@@ -116,6 +116,9 @@
           class="card-box"
           v-if="homeData.postList === 'simple'"
           :length="homeData.simplePostListLength || 10"
+          :moreArticle="
+            $themeConfig.updateBar && $themeConfig.updateBar.moreArticle
+          "
         />
 
         <!-- 详情版文章列表 -->
@@ -135,7 +138,7 @@
         <Content class="theme-vdoing-content custom card-box" />
       </template>
 
-      <template #mainRight>
+      <template v-if="!homeData.hideRightBar" #mainRight>
         <BloggerBar v-if="$themeConfig.blogger" />
         <CategoriesBar
           v-if="
@@ -150,11 +153,11 @@
           :tagsData="$categoriesAndTags.tags"
           :length="30"
         />
-        <!-- <div
+        <div
           class="custom-html-box card-box"
           v-if="homeSidebarB"
           v-html="homeSidebarB"
-        ></div> -->
+        ></div>
       </template>
     </MainLayout>
   </div>
@@ -177,7 +180,7 @@ const MOBILE_DESKTOP_BREAKPOINT = 720 // refer to config.styl
 BScroll.use(Slide)
 
 export default {
-  data () {
+  data() {
     return {
       isMQMobile: false,
 
@@ -192,25 +195,25 @@ export default {
     }
   },
   computed: {
-    homeData () {
+    homeData() {
       return {
         ...this.$page.frontmatter
       }
     },
-    hasFeatures () {
+    hasFeatures() {
       return !!(this.homeData.features && this.homeData.features.length)
     },
-    homeSidebarB () {
+    homeSidebarB() {
       const { htmlModules } = this.$themeConfig
       return htmlModules ? htmlModules.homeSidebarB : ''
     },
-    showBanner () { // 当分页不在第一页时隐藏banner栏
+    showBanner() { // 当分页不在第一页时隐藏banner栏
       return this.$route.query.p
         && this.$route.query.p != 1
         && (!this.homeData.postList || this.homeData.postList === 'detailed')
         ? false : true
     },
-    bannerBgStyle () {
+    bannerBgStyle() {
       let bannerBg = this.homeData.bannerBg
       if (!bannerBg || bannerBg === 'auto') { // 默认
         if (this.$themeConfig.bodyBgImg) { // 当有bodyBgImg时，不显示背景
@@ -224,14 +227,14 @@ export default {
         } else {
           return 'background: var(--mainBg);color: var(--textColor)'
         }
-      } else if (bannerBg.indexOf('background') > -1) { // 自定义背景样式
+      } else if (bannerBg.indexOf('background:') > -1) { // 自定义背景样式
         return bannerBg
       } else if (bannerBg.indexOf('.') > -1) { // 大图
         return `background: url(${this.$withBase(bannerBg)}) center center / cover no-repeat`
       }
 
     },
-    actionLink () {
+    actionLink() {
       return {
         link: this.homeData.actionLink,
         text: this.homeData.actionText
@@ -239,13 +242,13 @@ export default {
     }
   },
   components: { NavLink, MainLayout, PostList, UpdateArticle, BloggerBar, CategoriesBar, TagsBar, Pagination },
-  created () {
+  created() {
     this.total = this.$sortPosts.length
   },
-  beforeMount () {
+  beforeMount() {
     this.isMQMobile = window.innerWidth < MOBILE_DESKTOP_BREAKPOINT ? true : false; // vupress在打包时不能在beforeCreate(),created()访问浏览器api（如window）
   },
-  mounted () {
+  mounted() {
     if (this.$route.query.p) {
       this.currentPage = Number(this.$route.query.p)
     }
@@ -266,12 +269,12 @@ export default {
       })
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearTimeout(this.playTimer)
     this.slide && this.slide.destroy()
   },
   watch: {
-    '$route.query.p' () {
+    '$route.query.p'() {
       if (!this.$route.query.p) {
         this.currentPage = 1
       } else {
@@ -287,7 +290,7 @@ export default {
     }
   },
   methods: {
-    init () {
+    init() {
       clearTimeout(this.playTimer)
       this.slide = new BScroll(this.$refs.slide, {
         scrollX: true, // x轴滚动
@@ -317,16 +320,16 @@ export default {
       })
       this.autoGoNext()
     },
-    autoGoNext () {
+    autoGoNext() {
       clearTimeout(this.playTimer)
       this.playTimer = setTimeout(() => {
         this.slide.next()
       }, 4000)
     },
-    handlePagination (i) { // 分页
+    handlePagination(i) { // 分页
       this.currentPage = i
     },
-    getScrollTop () {
+    getScrollTop() {
       return window.pageYOffset
         || document.documentElement.scrollTop
         || document.body.scrollTop
@@ -469,12 +472,13 @@ export default {
     margin-top 2rem
     .main-left
       .card-box
-        margin-bottom 0.9rem
+        margin-bottom 2rem
       .pagination
-        margin-bottom 4rem
+        margin-bottom 3rem
       .theme-vdoing-content
         padding 0 2rem
         overflow hidden
+        border none
         &>:first-child
           padding-top 2rem
         &>:last-child
@@ -534,4 +538,8 @@ export default {
       .feature
         h2
           font-size 1.25rem
+.theme-style-line
+  .main-wrapper
+    @media (max-width 719px)
+      margin-top -1px
 </style>

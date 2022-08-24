@@ -15,6 +15,10 @@ npm run build
 # 进入生成的文件夹
 cd $dist_path
 
+#写入CNAME
+touch CNAME
+echo "blog.kechen.xyz" > CNAME
+
 git init
 git add -A
 git commit -m "deploy, $commit_info"

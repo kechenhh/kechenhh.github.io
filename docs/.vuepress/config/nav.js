@@ -19,7 +19,9 @@ module.exports = [
     text: '后端',
     link: '/backend/',
     items: [
-      { text: 'python', link: '/pages/d440e7/' }
+      { text: 'Node.js', link: '/pages/43525e/' },
+      { text: 'SQL', link: '/pages/435142/' },
+      { text: 'python', link: '/pages/d440e7/' },
     ],
   },
   {

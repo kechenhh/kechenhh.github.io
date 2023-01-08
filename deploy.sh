@@ -17,7 +17,7 @@ cd $dist_path
 
 #写入CNAME
 touch CNAME
-echo "blog.kechen.xyz" > CNAME
+echo "blog.kechenhh.xyz" > CNAME
 
 git init
 git add -A

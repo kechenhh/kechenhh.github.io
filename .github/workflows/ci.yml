@@ -37,7 +37,7 @@ jobs:
           yarn build
           cd docs/.vuepress/dist
           touch CNAME
-          echo "blog.kechen.xyz" > CNAME
+          echo "blog.kechenhh.xyz" > CNAME
           git config --global init.defaultBranch $deploy_branch
           git init
           git config user.name ${user_name}
